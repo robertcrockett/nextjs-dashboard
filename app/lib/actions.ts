@@ -2,7 +2,7 @@
 
 import { z } from 'zod';
 import { sql } from '@vercel/postgres';
-import { revalidatePath} from "next/cache";
+import { expirePath } from "next/cache";
 import { redirect } from 'next/navigation';
 
 const FormSchema = z.object({
@@ -30,7 +30,7 @@ export async function createInvoice(formData : FormData) {
     VALUES (${customerId}, ${amountInCents}, ${status}, ${date})
   `;
 
-  revalidatePath('/dashboard/invoices');
+  expirePath('/dashboard/invoices');
   redirect(`/dashboard/invoices`);
 }
 
@@ -51,11 +51,11 @@ export async function updateInvoice(id: string, formData: FormData) {
     WHERE id = ${id}
   `;
 
-  revalidatePath('/dashboard/invoices');
+  expirePath('/dashboard/invoices');
   redirect('/dashboard/invoices');
 }
 
 export async function deleteInvoice(id: string) {
   await sql`DELETE FROM invoices WHERE id = ${id}`;
-  revalidatePath('/dashboard/invoices');
+  expirePath('/dashboard/invoices');
 }
