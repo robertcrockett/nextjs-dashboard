@@ -2,7 +2,7 @@
 
 import { z } from 'zod';
 import { sql } from '@vercel/postgres';
-// @ts-ignore
+// @ts-expect-error - expire path will be part of 15.0.4
 import { expirePath } from "next/cache";
 import { redirect } from 'next/navigation';
 
@@ -34,7 +34,7 @@ export async function createInvoice(formData : FormData) {
   }
   catch (error) {
     return {
-      message: 'Database Error: Failed to Create Invoice.',
+      message: `${error}: Database Error: Failed to Create Invoice.`,
     };
   }
 
@@ -62,7 +62,7 @@ export async function updateInvoice(id: string, formData: FormData) {
   }
   catch (error) {
     return {
-      message: 'Database Error: Failed to Update Invoice.'
+      message: `${error}: Database Error: Failed to Update Invoice.`
     }
   }
 
@@ -78,7 +78,7 @@ export async function deleteInvoice(id: string) {
   }
   catch (error) {
     return {
-      message: 'Database Error: Failed to Delete Invoice.',
+      message: `${error}: Database Error: Failed to Delete Invoice.`,
     }
   }
 }
