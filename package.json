@@ -13,7 +13,7 @@
     "autoprefixer": "10.4.20",
     "bcrypt": "^5.1.1",
     "clsx": "^2.1.1",
-    "next": "^15.0.4-canary.27",
+    "next": "^15.0.4-canary.29",
     "next-auth": "5.0.0-beta.25",
     "postcss": "8.4.49",
     "react": "19.0.0-rc-b01722d5-20241114",
@@ -25,7 +25,7 @@
   },
   "devDependencies": {
     "@types/bcrypt": "^5.0.2",
-    "@types/node": "22.9.4",
+    "@types/node": "22.10.0",
     "@types/react": "npm:types-react@19.0.0-rc.1",
     "@types/react-dom": "npm:types-react-dom@19.0.0-rc.1",
     "eslint": "^9.15.0",
